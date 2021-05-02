@@ -13,6 +13,8 @@ end
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
+#devise gem
+gem 'devise', '~> 4.8'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
