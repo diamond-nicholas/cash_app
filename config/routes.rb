@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :deposits
+  resources :grouped_payments
+  resources :groups
   get 'users/index'
   get 'users/show'
   devise_for :users, :controllers => { registrations: 'registrations'}
