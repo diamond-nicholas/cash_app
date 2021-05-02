@@ -1,2 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="container">
+  <div class="users_heading">
+    <h1>My CashApp</h1>
+    <%= @user.name%>
+  </div>
+  <div class="users_main">
+    <ul class="users_deposit">
+      <li class="users_deposit_list">
+        <%= link_to 'All My Deposit', deposits_path %>
+      </li>
+      <li class="users_deposit_list">
+        <i class="fa fa-id-card" aria-hidden="true"></i>
+        <%= link_to 'All My External Deposit', grouped_payments_path %>
+      </li>
+      <li class="users_deposit_list">
+        <%= link_to 'All Groups', groups_path %>
+      </li>
+    </ul>
+  </div>
+</div>

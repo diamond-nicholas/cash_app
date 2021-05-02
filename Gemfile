@@ -15,6 +15,8 @@ group :production do
 end
 #devise gem
 gem 'devise', '~> 4.8'
+#sass gem for fonts icons
+gem 'font-awesome-sass', '~> 5.15.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
