@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Deposits</h1>
+<ul class="deposit_title">
+  <li class="deposit_title_list">Total amount</li>
+  <li class="deposit_title_list">$<%= @total %></li>
+</ul>
 
 <table>
   <thead>
@@ -12,12 +16,15 @@
     </tr>
   </thead>
 
+  
   <tbody>
     <% @deposits.each do |deposit| %>
       <tr>
         <td><%= deposit.name %></td>
         <td><%= deposit.amount %></td>
+        
         <td><%= deposit.author_id %></td>
+
         <td><%= link_to 'Show', deposit %></td>
         <td><%= link_to 'Edit', edit_deposit_path(deposit) %></td>
         <td><%= link_to 'Destroy', deposit, method: :delete, data: { confirm: 'Are you sure?' } %></td>

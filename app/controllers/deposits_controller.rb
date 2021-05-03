@@ -4,6 +4,7 @@ class DepositsController < ApplicationController
   # GET /deposits or /deposits.json
   def index
     @deposits = Deposit.all
+    @total = @deposits.map(&:amount).inject(:+)
   end
 
   # GET /deposits/1 or /deposits/1.json
@@ -56,6 +57,7 @@ class DepositsController < ApplicationController
     end
   end
 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deposit
