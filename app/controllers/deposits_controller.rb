@@ -74,6 +74,6 @@ class DepositsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deposit_params
-      params.require(:deposit).permit(:name, :amount)
+      params.require(:deposit).permit(:name, :amount, :author_id)
     end
 end
