@@ -7,6 +7,9 @@ class User < ApplicationRecord
     has_many :authored_deposits, foreign_key: :author_id, class_name: 'Deposit', dependent: :destroy
     has_many :groups, dependent: :destroy
 
+    validates :name, presence: true, length: { minimum: 2 }
+    validates :email, presence: true
+    validates :password, length: { in: 4..20 }
 
     def grouped
       authored_deposits.joins(:grouped_payments)
