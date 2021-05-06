@@ -1,14 +1,22 @@
 class DepositsController < ApplicationController
   before_action :set_deposit, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /deposits or /deposits.json
   def index
-    @deposits = Deposit.all
+    @deposits = current_user.grouped
+    @total = @deposits.map(&:amount).inject(:+)
+  end
+
+  def ungrouped
+    @deposits = current_user.ungrouped
     @total = @deposits.map(&:amount).inject(:+)
   end
 
   # GET /deposits/1 or /deposits/1.json
   def show
+    @groups = current_user.groups.all.order('name ASC')
+    @grouped_payment = GroupedPayment.new
   end
 
   # GET /deposits/new
@@ -22,7 +30,7 @@ class DepositsController < ApplicationController
 
   # POST /deposits or /deposits.json
   def create
-    @deposit = Deposit.new(deposit_params)
+    @deposit = current_user.authored_deposits.new(deposit_params)
 
     respond_to do |format|
       if @deposit.save
@@ -66,6 +74,6 @@ class DepositsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deposit_params
-      params.require(:deposit).permit(:name, :amount, :author_id)
+      params.require(:deposit).permit(:name, :amount)
     end
 end
