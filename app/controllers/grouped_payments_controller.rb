@@ -5,12 +5,12 @@ class GroupedPaymentsController < ApplicationController
   # POST /grouped_payments or /grouped_payments.json
   def create
     @grouped_payment = GroupedPayment.new(grouped_payment_params)
-    @deposit = Deposit.find_by(@grouped_payment.deposit_id)
+    @deposit = Deposit.find(@grouped_payment.deposit_id)
 
 
     respond_to do |format|
       if @grouped_payment.save
-        format.html { redirect_to @grouped_payment, notice: "Grouped payment was successfully created." }
+        format.html { redirect_to @deposit, notice: "Grouped payment was successfully created." }
         format.json { render :show, status: :created, location: @grouped_payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -23,9 +23,10 @@ class GroupedPaymentsController < ApplicationController
 
   # DELETE /grouped_payments/1 or /grouped_payments/1.json
   def destroy
+    @deposit = Deposit.find(@grouped_payment.deposit_id)
     @grouped_payment.destroy
     respond_to do |format|
-      format.html { redirect_to grouped_payments_url, notice: "Grouped payment was successfully destroyed." }
+      format.html { redirect_to @deposit, notice: "Grouped payment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -38,6 +39,6 @@ class GroupedPaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grouped_payment_params
-      params.require(:grouped_payment).permit(:deposit_id, :group_id)
+      params.require(:grouped_payment).permit(:group_id, :deposit_id)
     end
 end
