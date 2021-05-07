@@ -3,7 +3,7 @@ module DepositsHelper
     out = ''
     groups.each do |group|
       out += if deposit.groups.include?(group)
-               render 'remove_group', group: group, grouped_payment: deposit.grouped_deposit_find(group)
+               render 'remove_group', group: group, grouped_payment: deposit.grouped_payment_find(group)
              else
                render 'add_group', group: group
              end

@@ -1,23 +1,28 @@
-
-<div class="container">
-  <div class="users_heading">
-    <h1>My CashApp</h1>
-    <h2> <%= @user.email%> </h2>
-  </div>
-  <div class="users_main">
-    <ul class="users_deposit">
-      <li class="users_deposit_list">
+<div class="d-flex flex-column align-items-center h-full bg-secondary">
+  <h1 class="text-white my-3 fs-1">Control Your Spendings!</h1>
+  <h2 class="text-white"><%= @user.name %></h2>
+  <ul class="pt-5 list-unstyled">
+    <div class="d-flex justify-content-start text-white align-items-center">
       <i class="fas fa-donate me-2 p-2 rounded-circle border border-white text-white square"></i>
-        <%= link_to 'All My Deposit', deposits_path, class:'text-white text-decoration-none apex' %>
+      <li class="border-bottom border-light w-100 py-4">
+        <%= link_to('All My Expenses', deposits_path,  class: 'text-white text-decoration-none') %>
       </li>
-      <li class="users_deposit_list">
-       <i class="fas fa-money-bill me-2 p-2 rounded-circle border border-white text-white square"></i>
-        <%= link_to 'All My External Deposit', grouped_payments_path, class:'text-white text-decoration-none apex'%>
+    </div>
+    <div class="d-flex justify-content-start text-white align-items-center">
+      <i class="fas fa-money-bill me-2 p-2 rounded-circle border border-white text-white square"></i>
+      <li class="border-bottom border-light w-100 py-4">
+        <%= link_to('All My External Expenses', ungrouped_payments_path,  class: 'text-white text-decoration-none') %>
       </li>
-      <li class="users_deposit_list">
+    </div>
+    <div class="d-flex justify-content-start text-white align-items-center">
       <i class="fas fa-tags me-2 p-2 rounded-circle border border-white text-white square"></i>
-        <%= link_to 'All Groups', groups_path, class:'text-white text-decoration-none apex' %>
+      <li class="w-100 py-4">
+        <%= link_to('Categories', groups_path,  class: 'text-white text-decoration-none') %>
       </li>
-    </ul>
-  </div>
+    </div>
+  </ul>
+</div>
+<div class="d-flex justify-content-around fixed-bottom text-white align-items-center">
+  <p><%= link_to('Log Out', destroy_user_session_path, method: :delete,  class: 'text-white text-decoration-none') %> |
+  <%= link_to('Update Account', edit_user_registration_path,  class: 'text-white text-decoration-none') %> </p>
 </div>
