@@ -5,7 +5,7 @@ class GroupedPaymentsController < ApplicationController
   # POST /grouped_payments or /grouped_payments.json
   def create
     @grouped_payment = GroupedPayment.new(grouped_payment_params)
-    @deposit = Deposit.find(@grouped_payment.deposit_id)
+    @deposit = Deposit.find_by(@grouped_payment.deposit_id)
 
 
     respond_to do |format|
