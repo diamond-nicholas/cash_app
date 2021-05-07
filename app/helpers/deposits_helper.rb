@@ -1,5 +1,5 @@
 module DepositsHelper
-   def group_btns(groups, deposit)
+  def group_btns(groups, deposit)
     out = ''
     groups.each do |group|
       out += if deposit.groups.include?(group)
