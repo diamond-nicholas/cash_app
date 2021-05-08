@@ -78,6 +78,7 @@ To get a local copy up and running follow these simple example steps.
 - On development: and on test: change the values of username: and password: to the username and password of your local postgres server.
 - On the terminal type `rails db:create`.
 - On the terminal type `rails db:migrate`.
+- On the terminal type `bundle install`.
 
 ### Usage
 
