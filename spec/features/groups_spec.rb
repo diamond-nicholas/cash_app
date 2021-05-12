@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Groups", type: :feature do
+RSpec.feature 'Groups', type: :feature do
   let(:user) { User.create(name: 'diamond', email: 'diamond@gmail.com', password: '123456789') }
 
   scenario 'Group should be succesfully created' do
@@ -28,5 +28,4 @@ RSpec.feature "Groups", type: :feature do
     click_on 'Save Category'
     expect(page).to have_content("Name can't be blank")
   end
-
 end

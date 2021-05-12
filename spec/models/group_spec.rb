@@ -15,7 +15,6 @@ RSpec.describe Group, type: :model do
 end
 
 context 'Association tests' do
-
   it 'should belong to user' do
     group = Group.reflect_on_association(:user).macro
     expect(group).to eq(:belongs_to)

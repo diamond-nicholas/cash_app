@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Deposits", type: :feature do
-   let(:user) { User.create(name: 'diamond', email: 'diamond@gmail.com', password: '123456789') }
+RSpec.feature 'Deposits', type: :feature do
+  let(:user) { User.create(name: 'diamond', email: 'diamond@gmail.com', password: '123456789') }
 
   scenario 'Deposit should be succesfully created' do
     visit new_user_session_path
@@ -28,6 +28,4 @@ RSpec.feature "Deposits", type: :feature do
     click_on 'Save Expense'
     expect(page).to have_content("Name can't be blank")
   end
- 
-
 end
