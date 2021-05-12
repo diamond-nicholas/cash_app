@@ -18,3 +18,20 @@ RSpec.describe Deposit, type: :model do
     end
   end
 end
+
+context 'Association tests' do
+  it 'should belong to author' do
+    deposit = Deposit.reflect_on_association(:author).macro
+    expect(deposit).to eq(:belongs_to)
+  end
+
+  it 'should have many grouped_payments' do
+    deposit = Deposit.reflect_on_association(:grouped_payments).macro
+    expect(deposit).to eq(:has_many)
+  end
+
+  it 'should have many groups' do
+    deposit = Deposit.reflect_on_association(:groups).macro
+    expect(deposit).to eq(:has_many)
+  end
+end
