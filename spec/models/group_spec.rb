@@ -13,3 +13,21 @@ RSpec.describe Group, type: :model do
     end
   end
 end
+
+context 'Association tests' do
+
+  it 'should belong to user' do
+    group = Group.reflect_on_association(:user).macro
+    expect(group).to eq(:belongs_to)
+  end
+
+  it 'should have many deposits' do
+    group = Group.reflect_on_association(:deposits).macro
+    expect(group).to eq(:has_many)
+  end
+
+  it 'should have many grouped_payments' do
+    group = Group.reflect_on_association(:grouped_payments).macro
+    expect(group).to eq(:has_many)
+  end
+end
