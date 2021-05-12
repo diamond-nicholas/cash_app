@@ -30,3 +30,14 @@ context 'Association tests' do
     expect(user).to eq(:has_many)
   end
 end
+
+context 'log out' do
+  scenario 'Log Out' do
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_on 'Log in'
+    visit root_path
+    expect(page).to have_content('Log Out')
+  end
+end
